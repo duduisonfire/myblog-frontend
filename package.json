@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npx tailwindcss -i ./input.css -o ./public/assets/css/style.css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tailwind:dev": "npx tailwindcss -i ./input.css -o ./public/assets/css/style.css --watch"
