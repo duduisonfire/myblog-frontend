@@ -8,4 +8,5 @@ w-full
 h-full
 grid
 grid-cols-12
+font-sans
 `;
