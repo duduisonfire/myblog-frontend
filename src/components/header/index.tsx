@@ -1,14 +1,14 @@
 import { HeaderBar } from './styles/Header';
 import { HeaderList } from './styles/HeaderList';
 import { HeaderListContent } from './styles/HeaderListContent';
+import { HeaderContainer } from './styles/HeaderContainer';
 import { HeaderMenu } from './styles/HeaderMenu';
-import { HeaderNavigate } from './styles/HeaderNavigate';
 
 export default function Header() {
   return (
     <HeaderBar>
-      <HeaderMenu>
-        <HeaderNavigate>
+      <HeaderContainer>
+        <HeaderMenu>
           <HeaderList>
             <li>
               <HeaderListContent className="hidden md:block" href="#">
@@ -26,7 +26,7 @@ export default function Header() {
               </HeaderListContent>
             </li>
           </HeaderList>
-        </HeaderNavigate>
+        </HeaderMenu>
         <HeaderNavigate>
           <HeaderList>
             <li>
@@ -41,7 +41,7 @@ export default function Header() {
             </li>
           </HeaderList>
         </HeaderNavigate>
-      </HeaderMenu>
+      </HeaderContainer>
     </HeaderBar>
   );
 }
