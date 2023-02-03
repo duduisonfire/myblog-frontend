@@ -27,7 +27,7 @@ export default function Header() {
             </li>
           </HeaderList>
         </HeaderMenu>
-        <HeaderNavigate>
+        <HeaderMenu>
           <HeaderList>
             <li>
               <HeaderListContent className="text-2xl" href="#">
@@ -40,7 +40,7 @@ export default function Header() {
               </HeaderListContent>
             </li>
           </HeaderList>
-        </HeaderNavigate>
+        </HeaderMenu>
       </HeaderContainer>
     </HeaderBar>
   );
