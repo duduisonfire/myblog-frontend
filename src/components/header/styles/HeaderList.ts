@@ -1,8 +1,8 @@
 import tw from 'tailwind-styled-components';
 
 export const HeaderList = tw.ul`
-grid
-grid-cols-12
+flex
+float-right
 md:flex 
 me:flex-col
 md:flex-row 

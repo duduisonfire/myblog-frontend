@@ -29,12 +29,12 @@ export default function Header() {
         </HeaderNavigate>
         <HeaderNavigate>
           <HeaderList>
-            <li className="col-start-9">
+            <li>
               <HeaderListContent className="text-2xl" href="#">
                 <i className="lni lni-user"></i>
               </HeaderListContent>
             </li>
-            <li className="col-start-11 md:hidden">
+            <li className="md:hidden">
               <HeaderListContent className="text-2xl" href="#">
                 <i className="lni lni-menu"></i>
               </HeaderListContent>
