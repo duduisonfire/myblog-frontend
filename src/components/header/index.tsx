@@ -3,9 +3,7 @@ import { HeaderList } from './styles/HeaderList';
 import { HeaderListContent } from './styles/HeaderListContent';
 import { HeaderContainer } from './styles/HeaderContainer';
 import { HeaderMenu } from './styles/HeaderMenu';
-import { HiddenHeaderList } from './styles/HiddenHeaderList';
-import { HiddenHeaderListContent } from './styles/HiddenHeaderListContent';
-import { HiddenHeaderContainer } from './styles/HiddenHeaderContainer';
+import HiddenMenu from '../hidden-menu';
 
 export default function Header() {
   const showHiddenMenu = () => {
@@ -61,21 +59,7 @@ export default function Header() {
           </HeaderList>
         </HeaderMenu>
       </HeaderContainer>
-      <HiddenHeaderContainer id="hidden-menu">
-        <HeaderMenu>
-          <HiddenHeaderList>
-            <li>
-              <HiddenHeaderListContent href="#">Home</HiddenHeaderListContent>
-            </li>
-            <li>
-              <HiddenHeaderListContent href="#">Meus Projetos</HiddenHeaderListContent>
-            </li>
-            <li>
-              <HiddenHeaderListContent href="#">Sobre Mim</HiddenHeaderListContent>
-            </li>
-          </HiddenHeaderList>
-        </HeaderMenu>
-      </HiddenHeaderContainer>
+      <HiddenMenu />
     </HeaderBar>
   );
 }
