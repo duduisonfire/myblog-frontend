@@ -10,6 +10,7 @@ export default function App() {
       <BrowserRouter>
         <Routes />
       </BrowserRouter>
+      <Header />
     </Global>
   );
 }
