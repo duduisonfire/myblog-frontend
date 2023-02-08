@@ -52,7 +52,7 @@ export default function Header() {
               </HeaderListContent>
             </li>
             <li className="md:hidden">
-              <HeaderListContent onClick={showHiddenMenu} className="text-2xl" href="#">
+              <HeaderListContent onClick={showHiddenMenu} className="text-2xl">
                 <i className="lni lni-menu"></i>
               </HeaderListContent>
             </li>
