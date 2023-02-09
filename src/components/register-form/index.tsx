@@ -11,7 +11,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <form className="my-4" onSubmit={handleSubmit(onSubmit)}>
+    <form className="my-4 h-full" onSubmit={handleSubmit(onSubmit)}>
       <p className="flex justify-center text-xl text-slate-800 mb-4">Register</p>
       <RegisterFormDiv>
         <RegisterFormLabel>Full Name</RegisterFormLabel>

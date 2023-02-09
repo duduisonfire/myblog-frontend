@@ -6,7 +6,7 @@ bg-white
 w-full
 rounded-md
 py-5
-my-12
+my-28
 border
 shadow-md
 shadow-black
