@@ -1,14 +1,16 @@
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 import { RegisterFormButton } from './styles/RegisterFormButton';
 import { RegisterFormDiv } from './styles/RegisterFormDiv';
 import { RegisterFormLabel } from './styles/RegisterFormLabel';
 import { RegisterFormTextInput } from './styles/RegisterFormTextInput';
+import { backendConnection } from '../../config/axios';
 
 export default function RegisterForm() {
   const { register, handleSubmit } = useForm();
-  const onSubmit: SubmitHandler<FieldValues> = (user) => {
-    console.log(JSON.stringify(user));
-  };
+  async function onSubmit(user: FieldValues) {
+    const request = (await backendConnection.post('/users/register', user)).status;
+    console.log(request);
+  }
 
   return (
     <form className="my-4 h-full" onSubmit={handleSubmit(onSubmit)}>
@@ -23,7 +25,7 @@ export default function RegisterForm() {
       </RegisterFormDiv>
       <RegisterFormDiv>
         <RegisterFormLabel>Password</RegisterFormLabel>
-        <RegisterFormTextInput type="text" {...register('Password')} />
+        <RegisterFormTextInput type="password" {...register('Password')} />
       </RegisterFormDiv>
       <RegisterFormDiv>
         <RegisterFormButton type="submit" value="Register" />
