@@ -13,10 +13,11 @@ module.exports = {
   },
   plugins: ['prettier', 'react', '@typescript-eslint'],
   rules: {
+    '@typescript-eslint/no-explicit-any': 'off',
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
-    semi: 'error',
+    semi: 'off',
   },
 };
