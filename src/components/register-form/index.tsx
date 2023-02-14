@@ -16,8 +16,7 @@ export default function RegisterForm() {
     }
 
     try {
-      const request = await backendConnection.post('/users/register', user);
-      console.log(request.data);
+      await backendConnection.post('/users/register', user);
 
       const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
       userAlreadyExistErrorBox?.classList.add('hidden');
@@ -26,7 +25,6 @@ export default function RegisterForm() {
       emailAlreadyExistErrorBox?.classList.add('hidden');
     } catch (error: any) {
       const responseData = error.response.data as IRegisterResponse;
-      console.log(responseData.error);
 
       if (responseData.error === 'user-already-exist') {
         const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
