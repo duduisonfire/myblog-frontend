@@ -3,7 +3,7 @@ import { RegisterFormButton } from './styles/RegisterFormButton';
 import { RegisterFormDiv } from './styles/RegisterFormDiv';
 import { RegisterFormLabel } from './styles/RegisterFormLabel';
 import { RegisterFormTextInput } from './styles/RegisterFormTextInput';
-import { backendConnection } from '../../config/axios';
+import { axiosInstance } from '../../config/axios';
 import { RegisterErrorBox } from './styles/RegisterErrorBox';
 import IRegisterResponse from './types/IRegisterResponse';
 import RegisterFormVerify from './libs/RegisterFormVerify';
@@ -16,7 +16,7 @@ export default function RegisterForm() {
     }
 
     try {
-      await backendConnection.post('/users/register', user);
+      await axiosInstance.post('/users/register', user);
 
       const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
       userAlreadyExistErrorBox?.classList.add('hidden');
