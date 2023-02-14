@@ -24,8 +24,16 @@ export default function RegisterForm() {
         <RegisterFormTextInput type="text" {...register('User')} />
       </RegisterFormDiv>
       <RegisterFormDiv>
+        <RegisterFormLabel>Email</RegisterFormLabel>
+        <RegisterFormTextInput type="text" {...register('UserEmail')} />
+      </RegisterFormDiv>
+      <RegisterFormDiv>
         <RegisterFormLabel>Password</RegisterFormLabel>
         <RegisterFormTextInput type="password" {...register('Password')} />
+      </RegisterFormDiv>
+      <RegisterFormDiv>
+        <RegisterFormLabel>Confirm Password</RegisterFormLabel>
+        <RegisterFormTextInput type="password" {...register('ConfirmPassword')} />
       </RegisterFormDiv>
       <RegisterFormDiv>
         <RegisterFormButton type="submit" value="Register" />
