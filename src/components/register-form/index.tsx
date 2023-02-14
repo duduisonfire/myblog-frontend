@@ -17,7 +17,7 @@ export default function RegisterForm() {
       <p className="flex justify-center text-xl text-slate-800 mb-4">Register</p>
       <RegisterFormDiv>
         <RegisterFormLabel>Full Name</RegisterFormLabel>
-        <RegisterFormTextInput type="text" {...register('UserName')} />
+        <RegisterFormTextInput type="text" {...register('UserFullName')} />
       </RegisterFormDiv>
       <RegisterFormDiv>
         <RegisterFormLabel>Username</RegisterFormLabel>
