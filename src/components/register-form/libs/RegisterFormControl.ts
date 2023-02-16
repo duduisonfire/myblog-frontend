@@ -1,6 +1,6 @@
 import IRegisterResponse from '../types/IRegisterResponse';
 
-export default abstract class RegisterFormVerify {
+export default abstract class RegisterFormControl {
   private static emailIsInvalid() {
     const emailInput = document.querySelector('#email-input') as HTMLInputElement;
 

@@ -6,24 +6,24 @@ import { RegisterFormTextInput } from './styles/RegisterFormTextInput';
 import { axiosInstance } from '../../config/axios';
 import { RegisterErrorBox } from './styles/RegisterErrorBox';
 import IRegisterResponse from './types/IRegisterResponse';
-import RegisterFormVerify from './libs/RegisterFormVerify';
 import { RegisterConcludedBox } from './styles/RegisterConcludedBox';
+import RegisterFormControl from './libs/RegisterFormControl';
 
 export default function RegisterForm() {
   const { register, handleSubmit } = useForm();
   async function onSubmit(user: FieldValues) {
-    if (RegisterFormVerify.formIsInvalid()) {
+    if (RegisterFormControl.formIsInvalid()) {
       return;
     }
 
     try {
       await axiosInstance.post('/users/register', user);
 
-      RegisterFormVerify.clearForm();
+      RegisterFormControl.clearForm();
     } catch (error: any) {
       const responseData = error.response.data as IRegisterResponse;
 
-      RegisterFormVerify.updatePageWithResponseErrors(responseData);
+      RegisterFormControl.updatePageWithResponseErrors(responseData);
     }
   }
 
