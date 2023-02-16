@@ -42,7 +42,7 @@ export default abstract class RegisterFormControl {
     return false;
   }
 
-  public static UpdatePage() {
+  public static UpdateForm() {
     if (this.userIsInvalid()) {
       const lengthErrorBox = document.querySelector('#user-length-error');
       lengthErrorBox?.classList.remove('hidden');
