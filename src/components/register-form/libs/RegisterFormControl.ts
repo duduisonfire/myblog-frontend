@@ -76,7 +76,7 @@ export default abstract class RegisterFormControl {
     }
   }
 
-  static updatePageWithResponseErrors(responseData: IRegisterResponse) {
+  static updateFormWithResponseErrors(responseData: IRegisterResponse) {
     if (responseData.error === 'user-already-exist') {
       const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
       userAlreadyExistErrorBox?.classList.remove('hidden');

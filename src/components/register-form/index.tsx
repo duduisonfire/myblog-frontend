@@ -25,7 +25,7 @@ export default function RegisterForm() {
     } catch (error: any) {
       const responseData = error.response.data as IRegisterResponse;
 
-      RegisterFormControl.updatePageWithResponseErrors(responseData);
+      RegisterFormControl.updateFormWithResponseErrors(responseData);
     }
   }
 
