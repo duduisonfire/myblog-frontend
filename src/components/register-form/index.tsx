@@ -12,9 +12,8 @@ import RegisterFormControl from './libs/RegisterFormControl';
 export default function RegisterForm() {
   const { register, handleSubmit } = useForm();
   async function onSubmit(user: FieldValues) {
-    RegisterFormControl.UpdateForm();
-
     if (RegisterFormControl.formIsInvalid()) {
+      RegisterFormControl.UpdateForm();
       return;
     }
 
