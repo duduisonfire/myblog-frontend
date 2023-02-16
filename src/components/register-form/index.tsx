@@ -7,45 +7,28 @@ import { axiosInstance } from '../../config/axios';
 import { RegisterErrorBox } from './styles/RegisterErrorBox';
 import IRegisterResponse from './types/IRegisterResponse';
 import RegisterFormVerify from './libs/RegisterFormVerify';
+import { RegisterConcludedBox } from './styles/RegisterConcludedBox';
 
 export default function RegisterForm() {
   const { register, handleSubmit } = useForm();
   async function onSubmit(user: FieldValues) {
-    if (RegisterFormVerify.ValidateForm()) {
+    if (RegisterFormVerify.formIsInvalid()) {
       return;
     }
 
     try {
       await axiosInstance.post('/users/register', user);
 
-      const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
-      userAlreadyExistErrorBox?.classList.add('hidden');
-
-      const emailAlreadyExistErrorBox = document.querySelector('#email-already-exist');
-      emailAlreadyExistErrorBox?.classList.add('hidden');
+      RegisterFormVerify.clearForm();
     } catch (error: any) {
       const responseData = error.response.data as IRegisterResponse;
 
-      if (responseData.error === 'user-already-exist') {
-        const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
-        userAlreadyExistErrorBox?.classList.remove('hidden');
-      } else {
-        const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
-        userAlreadyExistErrorBox?.classList.add('hidden');
-      }
-
-      if (responseData.error === 'email-already-exist') {
-        const emailAlreadyExistErrorBox = document.querySelector('#email-already-exist');
-        emailAlreadyExistErrorBox?.classList.remove('hidden');
-      } else {
-        const emailAlreadyExistErrorBox = document.querySelector('#email-already-exist');
-        emailAlreadyExistErrorBox?.classList.add('hidden');
-      }
+      RegisterFormVerify.updatePageWithResponseErrors(responseData);
     }
   }
 
   return (
-    <form className="my-4 h-full" onSubmit={handleSubmit(onSubmit)}>
+    <form id="register-form" className="my-4 h-full" onSubmit={handleSubmit(onSubmit)}>
       <p className="flex justify-center text-xl text-slate-800 mb-4">Register</p>
       <RegisterFormDiv>
         <RegisterFormLabel>Full Name</RegisterFormLabel>
@@ -75,6 +58,7 @@ export default function RegisterForm() {
       </RegisterFormDiv>
       <RegisterFormDiv>
         <RegisterFormButton type="submit" value="Register" />
+        <RegisterConcludedBox id="account-registered">Conta criada com sucesso.</RegisterConcludedBox>
       </RegisterFormDiv>
     </form>
   );

@@ -1,6 +1,6 @@
-export default abstract class RegisterFormVerify {
-  private static formIsValid = false;
+import IRegisterResponse from '../types/IRegisterResponse';
 
+export default abstract class RegisterFormVerify {
   private static emailIsInvalid() {
     const emailInput = document.querySelector('#email-input') as HTMLInputElement;
 
@@ -42,7 +42,7 @@ export default abstract class RegisterFormVerify {
     return false;
   }
 
-  private static UpdatePage() {
+  public static UpdatePage() {
     if (this.userIsInvalid()) {
       const lengthErrorBox = document.querySelector('#user-length-error');
       lengthErrorBox?.classList.remove('hidden');
@@ -76,13 +76,41 @@ export default abstract class RegisterFormVerify {
     }
   }
 
-  static ValidateForm() {
-    if (!this.userIsInvalid() && !this.emailIsInvalid() && !this.passwordIsInvalid() && this.passwordIsNotEqual()) {
-      this.formIsValid = true;
+  static updatePageWithResponseErrors(responseData: IRegisterResponse) {
+    if (responseData.error === 'user-already-exist') {
+      const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
+      userAlreadyExistErrorBox?.classList.remove('hidden');
+    } else {
+      const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
+      userAlreadyExistErrorBox?.classList.add('hidden');
     }
 
-    this.UpdatePage();
+    if (responseData.error === 'email-already-exist') {
+      const emailAlreadyExistErrorBox = document.querySelector('#email-already-exist');
+      emailAlreadyExistErrorBox?.classList.remove('hidden');
+    } else {
+      const emailAlreadyExistErrorBox = document.querySelector('#email-already-exist');
+      emailAlreadyExistErrorBox?.classList.add('hidden');
+    }
+  }
 
-    return this.formIsValid;
+  static clearForm() {
+    const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
+    userAlreadyExistErrorBox?.classList.add('hidden');
+
+    const emailAlreadyExistErrorBox = document.querySelector('#email-already-exist');
+    emailAlreadyExistErrorBox?.classList.add('hidden');
+
+    const registerConcludedBox = document.querySelector('#account-registered');
+    registerConcludedBox?.classList.remove('hidden');
+
+    const registerForm: HTMLFormElement | null = document.querySelector('#register-form');
+    registerForm?.reset();
+  }
+
+  static formIsInvalid() {
+    const isValid =
+      this.userIsInvalid() || this.emailIsInvalid() || this.passwordIsInvalid() || this.passwordIsNotEqual();
+    return isValid;
   }
 }
