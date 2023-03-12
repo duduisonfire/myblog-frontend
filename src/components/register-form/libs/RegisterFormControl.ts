@@ -76,7 +76,7 @@ export default abstract class RegisterFormControl {
     }
   }
 
-  static updateFormWithResponseErrors(responseData: IRegisterResponse) {
+  public static updateFormWithResponseErrors(responseData: IRegisterResponse) {
     if (responseData.error === 'user-already-exist') {
       const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
       userAlreadyExistErrorBox?.classList.remove('hidden');
@@ -94,7 +94,7 @@ export default abstract class RegisterFormControl {
     }
   }
 
-  static clearForm() {
+  public static clearForm() {
     const userAlreadyExistErrorBox = document.querySelector('#user-already-exist');
     userAlreadyExistErrorBox?.classList.add('hidden');
 
@@ -108,7 +108,7 @@ export default abstract class RegisterFormControl {
     registerForm?.reset();
   }
 
-  static formIsInvalid() {
+  public static formIsInvalid() {
     const isValid =
       this.userIsInvalid() || this.emailIsInvalid() || this.passwordIsInvalid() || this.passwordIsNotEqual();
     return isValid;
